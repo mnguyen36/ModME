@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -62,6 +63,24 @@ router.post('/adduser', function(req, res) {
             res.redirect("userlist");
         }
     });
+});
+
+router.post('/remove-user', function(req, res){
+   var db = req.db;
+   var id = req.body.id;
+   var collection = db.get('usercollection');
+   collection.remove({
+       "_id": id
+   }, function( err, doc){
+       if (err){
+           res.send("problem");
+       } else {
+// If it worked, set the header so the address bar doesn't still say /adduser
+           res.location("userlist");
+           // And forward to success page
+           res.redirect("userlist");       }
+   })
+
 });
 
 module.exports = router;
