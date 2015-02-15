@@ -14,7 +14,7 @@ router.get('/remove-user', function (req, res){
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'ModME' });
 });
 
 /* GET Hello World page. */

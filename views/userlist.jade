@@ -1,7 +1,7 @@
 extends layout
 block content
     link(rel="stylesheet", href='/stylesheets/userlist.css')
-    div
+    div.center-column
         table.user-table.center.sortable
             thead
                 th Name
@@ -13,7 +13,7 @@ block content
                     td #{user.username}
                     td #{user.email}
                     td #{user._id}
-                    td
+                    td.remove
                         button.removemodal(class="fancybox.iframe", href="/remove-user?userid=#{user._id}&username=#{user.username}")
 
         div.add-new-user
