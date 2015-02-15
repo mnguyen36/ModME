@@ -1,13 +1,110 @@
+body{
+  margin:0;
+}
 .center{
   margin-left: auto;
   margin-right: auto;
 }
+table.user-table{
+  width:1000px;
+  font-family:Arial, Helvetica, sans-serif;
+  color:#666;
+  font-size:12px;
+  text-shadow: 1px 1px 0px #fff;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+}
 
 table.user-table, .user-table td, .user-table th{
+  background-color: #f2f2f2;
+  text-indent: 1%;
   text-align: left;
   table-layout: fixed;
-  padding:10px;
   border-collapse: collapse;
-  width: 50%;
-  border: 2px solid black;
+  /*width: 100%;*/
+  border: 1px solid #ccc;
+  height: 40px;
+}
+
+.user-table th{
+  /*padding:21px 25px 22px 25px;*/
+  border-top:1px solid #fafafa;
+  border-bottom:1px solid #e0e0e0;
+
+  background: #ededed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+  background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+}
+
+.user-table td{
+  /*left: 10px;*/
+  height: 50px;
+  width: 100%;
+}
+.user-table button{
+  position: relative;
+  height: 50px;
+  width : 100%;
+  /*width: 1%;*/
+  left:-10px;
+}
+
+.add-new-user{
+  padding: 10px;
+  text-align: center;
+  height: 50px;
+}
+.add-new-user button{
+  height: 50px;
+  width: 200px;
+}
+
+
+
+
+#nav {
+  width: 100%;
+  /*height: 20pxpx;*/
+  float: left;
+  /*margin: 0 0 1em 0;*/
+  padding: 0;
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #ccc;
+}
+#nav ul {
+  list-style: none;
+  width: 500px;
+  margin: 0 0 auto auto;
+  padding: 0; }
+#nav li {
+  text-align: center;
+  width: 25%;
+  float: left;
+}
+#nav li a {
+  background-color: #7cb2c7;
+  display: block;
+  padding: 8px 15px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #ffffff;
+  border-right: 1px solid #ccc; }
+#nav li:first-child a {
+  border-left: 1px solid #ccc; }
+#nav li a:hover {
+  color: #c00;
+  background-color: #fff; }
+
+.center-column{
+  padding: 50px;
+  width:50%;
+  margin-left: auto;
+  margin-right : auto;
+  vertical-align: top;
+}
+
+.center-column input, .center-column button{
+  margin: 10px;
+  padding: 10px;
 }

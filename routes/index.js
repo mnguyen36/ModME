@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+router.get('/remove-user', function (req, res){
+    res.render('removemodal', {userid: req.query.userid});
+});
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -23,9 +27,12 @@ router.get('/userlist', function(req, res) {
     var db = req.db;
     var collection = db.get('usercollection');
     collection.find({},{},function(e,docs){
-        res.render('userlist', {
-            "userlist" : docs
-        });
+        res.render('userlist',
+            {
+                title:'User List',
+                userlist: docs
+            }
+        );
     });
 });
 
@@ -66,6 +73,7 @@ router.post('/adduser', function(req, res) {
 });
 
 router.post('/remove-user', function(req, res){
+
    var db = req.db;
    var id = req.body.id;
    var collection = db.get('usercollection');
@@ -82,5 +90,7 @@ router.post('/remove-user', function(req, res){
    })
 
 });
+
+
 
 module.exports = router;

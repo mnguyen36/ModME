@@ -2,6 +2,25 @@ doctype html
 html
   head
     title= title
+    script(src="/javascripts/jquery-1.10.1.min.js")
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/jquery.fancybox.css')
+    //script(src="/javascripts/jquery.fancybox.pack.js")
+    script(src="/javascripts/jquery.fancybox.js?v=2.1.5")
+    script(src="/javascripts/userlist.js")
+
   body
-    block content
+    header
+      div(id='nav')
+        ul
+          li
+            a(href='/') Home
+          li
+            a(href='userlist') Users
+          li
+            a(href) what
+          li
+            a(href) what
+
+
+  block content

@@ -1,7 +1,7 @@
-extends layout
-block content
-    h1= title
-    form#formAddUser(name="adduser",method="post",action="/adduser")
-        input#inputUserName(type="text", placeholder="username", name="username")
-        input#inputUserEmail(type="text", placeholder="useremail", name="useremail")
-        button#btnSubmit(type="submit") submit
+div.center-column
+        form(action="/adduser", method='post')
+            input#inputUserName(type="text", placeholder="username", name="username")
+            br
+            input#inputUserEmail(type="text", placeholder="useremail", name="useremail")
+            br
+            button#btnSubmit(type="submit" onclick="parent.$.fancybox.close()") submit
