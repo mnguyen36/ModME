@@ -1,19 +1,22 @@
 extends layout
 block content
+    link(rel="stylesheet", href='/stylesheets/userlist.css')
     div
-        table.user-table.center
-            tr
+        table.user-table.center.sortable
+            thead
                 th Name
                 th Email
                 th ID
-                th Remove
+                th
             each user, i in userlist
                 tr
                     td #{user.username}
                     td #{user.email}
                     td #{user._id}
                     td
-                        button.openmodal(class="fancybox.iframe", href="/remove-user?userid=#{user._id}") REMOVE
+                        button.removemodal(class="fancybox.iframe", href="/remove-user?userid=#{user._id}&username=#{user.username}")
 
         div.add-new-user
-            button.openmodal(class="fancybox.iframe", href="/newuser") Add New User
+            button.addusermodal(class="fancybox.iframe", href="/newuser") Add New User
+    script(src="/javascripts/userlist.js")
+

@@ -1,7 +1,11 @@
+link(rel='stylesheet', href='/stylesheets/style.css')
+
 div.center-column
-        form(action="/adduser", method='post')
-            input#inputUserName(type="text", placeholder="username", name="username")
-            br
-            input#inputUserEmail(type="text", placeholder="useremail", name="useremail")
-            br
-            button#btnSubmit(type="submit" onclick="parent.$.fancybox.close()") submit
+    form(action="/adduser", method='post')
+        label(for="inputUserName") Name
+        input#inputUserName(type="text", placeholder="username", name="username")
+        br
+        label(for="inputUserEmail") Email
+        input#inputUserEmail(type="text", placeholder="useremail", name="useremail")
+        br
+        button#btnSubmit(type="submit" onclick="parent.$.fancybox.close()") Add

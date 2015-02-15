@@ -1,8 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
+
+//REMOVE USER
 router.get('/remove-user', function (req, res){
-    res.render('removemodal', {userid: req.query.userid});
+    // query strings: (name, userid)
+    res.render('removemodal', {
+        userid: req.query.userid,
+        username: req.query.username
+    });
 });
 
 

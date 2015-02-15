@@ -1,0 +1,8 @@
+button.removemodal{
+    border: none;
+    left: 0px;
+    height: 35px;
+    width: 35px;
+    background: url('/images/fancybox/fancybox_sprite.png' ) 0 0;
+    /*background*/
+}

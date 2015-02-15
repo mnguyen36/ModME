@@ -4,11 +4,21 @@
 
 
 $(document).ready(function() {
-    $("button.openmodal").fancybox(
+    $("button.removemodal").fancybox(
         {
-            width:'200px',
+            width:'400px',
             height:'auto',
-            maxHeight:'10%',
+            maxHeight:'130px',
+            'afterClose':function () {
+                window.location.reload();
+            }
+        }
+    );
+    $("button.addusermodal").fancybox(
+        {
+            width:'500px',
+            height:'500px',
+            maxHeight:'300px',
             'afterClose':function () {
                 window.location.reload();
             }
