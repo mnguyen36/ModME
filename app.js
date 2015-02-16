@@ -4,11 +4,22 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var passport = require('passport');
+var flash    = require('connect-flash');
+var session      = require('express-session');
+var morgan       = require('morgan');
+
+
+
+
 
 // New Code
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('mongodb://heroku_app33971358:jf6h2nhn6ftabihaevie5ciiu8@ds043971.mongolab.com:43971/heroku_app33971358');
+mongoose.connect('mongodb://heroku_app33971358:jf6h2nhn6ftabihaevie5ciiu8@ds043971.mongolab.com:43971/heroku_app33971358');
+require('./config/passport')(passport);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -18,6 +29,9 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -25,6 +39,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
+app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Make our db accessible to our router
@@ -42,6 +57,9 @@ app.use(function(req, res, next) {
     err.status = 404;
     next(err);
 });
+
+app.use(morgan('dev')); // log every request to the console
+
 
 /// error handlers
 

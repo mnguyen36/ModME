@@ -1,8 +1,10 @@
 button.removemodal{
     border: none;
-    left: 0px;
-    height: 35px;
-    width: 35px;
+    top: -3px;
+    left: 0;
+    height: 25px;
+    width: 25px;
     background: url('/images/fancybox/fancybox_sprite.png' ) 0 0;
+    background-size: 30px;
     /*background*/
 }

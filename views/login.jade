@@ -1,0 +1,12 @@
+extends layout
+block content
+    div.container
+        form(action="/login" method = "post")
+            label Email
+            input(type="text", name="email")
+            br
+            label Password
+            input(type="password", name="password")
+            button(type="submit") Login
+
+        p Sign Up <a href="/signup"> Sign Up </a>

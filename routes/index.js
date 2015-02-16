@@ -1,15 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
 
 
-//REMOVE USER
-router.get('/remove-user', function (req, res){
-    // query strings: (name, userid)
-    res.render('removemodal', {
-        userid: req.query.userid,
-        username: req.query.username
-    });
-});
 
 
 /* GET home page. */
@@ -28,8 +21,52 @@ router.get('/helloworld',
     }
 );
 
+/* GET LOGIN */
+router.get('/login',
+    function(req, res){
+        res.render('login',
+            {
+                title: 'LOGIN PAGE',
+                message: req.flash('loginMessage')
+            }
+        )
+    }
+);
+
+router.post('/login', passport.authenticate('local-login', {
+    successRedirect: '/userlist',
+    failureRedirect: '/login?login',
+    failureFlash: true
+}));
+
+/* SIGN UP */
+router.get('/signup',
+    function(req, res){
+        res.render('signup',
+            {
+                message: req.flash('signupMessage')
+            }
+        )
+    }
+);
+
+router.post('/signup', passport.authenticate('local-signup', {
+    successRedirect: '/userlist',
+    failureRedirect: '/signup',
+    failureFlash: true
+}));
+
+/* Log Out */
+router.get('/logout',
+    function(req, res){
+        req.logout();
+        res.redirect('/');
+    }
+);
+
+
 /* GET Userlist page. */
-router.get('/userlist', function(req, res) {
+router.get('/userlist', isLoggedIn, function(req, res) {
     var db = req.db;
     var collection = db.get('usercollection');
     collection.find({},{},function(e,docs){
@@ -78,6 +115,16 @@ router.post('/adduser', function(req, res) {
     });
 });
 
+//REMOVE USER
+router.get('/remove-user', function (req, res){
+    // query strings: (name, userid)
+    res.render('removemodal', {
+        userid: req.query.userid,
+        username: req.query.username
+    });
+});
+
+
 router.post('/remove-user', function(req, res){
 
    var db = req.db;
@@ -98,5 +145,11 @@ router.post('/remove-user', function(req, res){
 });
 
 
+function isLoggedIn(req, res, next){
+    if (req.isAuthenticated()){
+        return next;
+    }
+    res.redirect('/');
+}
 
 module.exports = router;
