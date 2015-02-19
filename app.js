@@ -19,9 +19,8 @@ var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('mongodb://heroku_app33971358:jf6h2nhn6ftabihaevie5ciiu8@ds043971.mongolab.com:43971/heroku_app33971358');
 mongoose.connect('mongodb://heroku_app33971358:jf6h2nhn6ftabihaevie5ciiu8@ds043971.mongolab.com:43971/heroku_app33971358');
-require('./config/passport')(passport);
 
-var routes = require('./routes/index');
+require('./config/passport')(passport);
 var users = require('./routes/users');
 
 var app = express();
@@ -48,9 +47,7 @@ app.use(function(req,res,next){
     next();
 });
 
-app.use('/', routes);
-//app.use('/users', users);
-
+require('./routes/index')(app, passport);
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -59,8 +56,6 @@ app.use(function(req, res, next) {
 });
 
 app.use(morgan('dev')); // log every request to the console
-
-
 /// error handlers
 
 // development error handler
