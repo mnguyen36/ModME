@@ -4,6 +4,7 @@
 
 
 $(document).ready(function() {
+
     $("button.removemodal").fancybox(
         {
             width:'400px',
@@ -24,6 +25,5 @@ $(document).ready(function() {
             }
         }
     )
-
 
 });

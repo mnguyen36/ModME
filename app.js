@@ -9,19 +9,14 @@ var flash    = require('connect-flash');
 var session      = require('express-session');
 var morgan       = require('morgan');
 var passport = require('passport');
-
-
-
-
-
-// New Code
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('mongodb://heroku_app33971358:jf6h2nhn6ftabihaevie5ciiu8@ds043971.mongolab.com:43971/heroku_app33971358');
+
 mongoose.connect('mongodb://heroku_app33971358:jf6h2nhn6ftabihaevie5ciiu8@ds043971.mongolab.com:43971/heroku_app33971358');
 
 require('./config/passport')(passport);
-var users = require('./routes/users');
+
 
 var app = express();
 
@@ -36,6 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// session before passport.session
 app.use(session({ secret: 'kjh4rkj3443khj43'})); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
@@ -47,7 +43,7 @@ app.use(function(req,res,next){
     next();
 });
 
-require('./routes/index')(app, passport);
+require('./routes/controller')(app, passport);
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

@@ -1,83 +1,7 @@
-//var express = require('express');
-//var router = express.Router();
-//var passport = require('passport');
 var bcrypt   = require('bcrypt-nodejs');
-module.exports = function(app, passport) {
-    //var router = app.router;
 
 
-    /* GET home page. */
-    app.get('/', function (req, res, next) {
-        var user = "";
-        if (req.isAuthenticated()){
-            user = req["user"];
-        }
-        res.render('index', {
-            title: 'ModME',
-            user : user
-        });
-    });
-
-    /* GET Hello World page. */
-    app.get('/helloworld',
-        function (req, res) {
-            res.render('helloworld',
-                {
-                    title: 'Hello, World!'
-                }
-            )
-        }
-    );
-
-    /* GET LOGIN */
-    app.get('/login',
-        function (req, res) {
-
-            if (req.isAuthenticated()){
-                res.redirect('/');
-            }
-            res.render('login',
-                {
-                    title: 'LOGIN PAGE',
-                    message: req.flash('loginMessage')
-                }
-            )
-        }
-    );
-
-    app.post('/login', passport.authenticate('local', {
-        successRedirect: '/userlist',
-        failureRedirect: '/login?login',
-        failureFlash: true
-    }));
-
-    /* SIGN UP */
-    app.get('/signup',
-        function (req, res) {
-            res.render('signup',
-                {
-                    message: req.flash('signupMessage')
-                }
-            )
-        }
-    );
-
-    app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/userlist',
-        failureRedirect: '/signup',
-        failureFlash: true
-    }));
-
-    /* Log Out */
-    app.get('/logout',
-        function (req, res) {
-            req.logout();
-            res.redirect('/');
-        }
-    );
-
-
-    /* GET Userlist page. */
+module.exports = function(app, passport){
     app.get('/userlist', function (req, res) {
         if (req.isAuthenticated()){
             var user = req['user'];
@@ -97,8 +21,7 @@ module.exports = function(app, passport) {
         }
     });
 
-    /* GET New User page. */
-    app.get('/newuser', function (req, res) {
+    app.get('/userlist/newuser', function (req, res) {
         var email = "";
         if (req.isAuthenticated()){
             user = req["user"];
@@ -109,8 +32,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    /* POST to Add User Service */
-    app.post('/adduser', function (req, res) {
+    app.post('/userlist/adduser', function (req, res) {
 
         // Set our internal DB variable
         var db = req.db;
@@ -145,8 +67,11 @@ module.exports = function(app, passport) {
             }
         });
     });
+    /* POST to Add User Service */
 
-//REMOVE USER
+
+
+    //REMOVE USER
     app.get('/remove-user', function (req, res) {
 
         res.render('removemodal', {
@@ -175,11 +100,4 @@ module.exports = function(app, passport) {
         })
 
     });
-    //return app;
 };
-
-
-
-
-
-//module.exports = router;
