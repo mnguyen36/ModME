@@ -1,22 +1,22 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var flash    = require('connect-flash');
-var session      = require('express-session');
-var morgan       = require('morgan');
-var passport = require('passport');
-var mongo = require('mongodb');
-var monk = require('monk');
+var express         = require('express');
+var path            = require('path');
+var favicon         = require('serve-favicon');
+var logger          = require('morgan');
+var cookieParser    = require('cookie-parser');
+var bodyParser      = require('body-parser');
+var mongoose        = require('mongoose');
+var flash           = require('connect-flash');
+var session         = require('express-session');
+var morgan          = require('morgan');
+var passport        = require('passport');
+var mongo           = require('mongodb');
+var monk            = require('monk');
+
 var db = monk('mongodb://heroku_app33971358:jf6h2nhn6ftabihaevie5ciiu8@ds043971.mongolab.com:43971/heroku_app33971358');
 
 mongoose.connect('mongodb://heroku_app33971358:jf6h2nhn6ftabihaevie5ciiu8@ds043971.mongolab.com:43971/heroku_app33971358');
 
 require('./config/passport')(passport);
-
 
 var app = express();
 
@@ -52,9 +52,7 @@ app.use(function(req, res, next) {
 });
 
 app.use(morgan('dev')); // log every request to the console
-/// error handlers
 
-// development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {

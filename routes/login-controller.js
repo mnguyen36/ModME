@@ -2,7 +2,6 @@ module.exports = function(app, passport) {
 
     app.get('/login',
         function (req, res) {
-
             if (req.isAuthenticated()) {
                 res.redirect('/');
             }
@@ -20,4 +19,4 @@ module.exports = function(app, passport) {
         failureRedirect: '/login?login',
         failureFlash: true
     }));
-}
+};

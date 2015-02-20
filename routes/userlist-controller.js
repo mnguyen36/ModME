@@ -2,6 +2,7 @@ var bcrypt   = require('bcrypt-nodejs');
 
 
 module.exports = function(app, passport){
+
     app.get('/userlist', function (req, res) {
         if (req.isAuthenticated()){
             var user = req['user'];
@@ -22,7 +23,6 @@ module.exports = function(app, passport){
     });
 
     app.get('/userlist/newuser', function (req, res) {
-        var email = "";
         if (req.isAuthenticated()){
             user = req["user"];
         }
@@ -42,7 +42,6 @@ module.exports = function(app, passport){
         var userEmail = req.body.useremail;
         var password = req.body.password;
 
-
         // Set our collection
         var collection = db.get('users');
 
@@ -53,7 +52,6 @@ module.exports = function(app, passport){
                 "email": userEmail,
                 "password" : bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
             }
-
         }, function (err, doc) {
             if (err) {
                 // If it failed, return error
@@ -67,11 +65,7 @@ module.exports = function(app, passport){
             }
         });
     });
-    /* POST to Add User Service */
 
-
-
-    //REMOVE USER
     app.get('/remove-user', function (req, res) {
 
         res.render('removemodal', {
@@ -79,7 +73,6 @@ module.exports = function(app, passport){
             username: req.query.username
         });
     });
-
 
     app.post('/remove-user', function (req, res) {
 
@@ -92,7 +85,7 @@ module.exports = function(app, passport){
             if (err) {
                 res.send("problem");
             } else {
-// If it worked, set the header so the address bar doesn't still say /adduser
+                // If it worked, set the header so the address bar doesn't still say /adduser
                 res.location("userlist");
                 // And forward to success page
                 res.redirect("userlist");

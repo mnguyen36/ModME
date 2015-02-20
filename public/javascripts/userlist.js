@@ -1,7 +1,3 @@
-/**
- * Created by mnguyen on 2/14/2015.
- */
-
 
 $(document).ready(function() {
 
