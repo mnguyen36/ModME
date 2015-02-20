@@ -27,6 +27,10 @@ module.exports = function(app, passport) {
     /* GET LOGIN */
     app.get('/login',
         function (req, res) {
+
+            if (req.isAuthenticated()){
+                res.redirect('what');
+            }
             res.render('login',
                 {
                     title: 'LOGIN PAGE',
@@ -37,7 +41,7 @@ module.exports = function(app, passport) {
     );
 
     app.post('/login', passport.authenticate('local', {
-        successRedirect: '/userlist',
+        successRedirect: '/what',
         failureRedirect: '/login?login',
         failureFlash: true
     }));
@@ -70,17 +74,20 @@ module.exports = function(app, passport) {
 
     /* GET Userlist page. */
     app.get('/userlist', function (req, res) {
-
-        var db = req.db;
-        var collection = db.get('usercollection');
-        collection.find({}, {}, function (e, docs) {
-            res.render('userlist',
-                {
-                    title: 'User List',
-                    userlist: docs
-                }
-            );
-        });
+        if (req.isAuthenticated()){
+            var db = req.db;
+            var collection = db.get('usercollection');
+            collection.find({}, {}, function (e, docs) {
+                res.render('userlist',
+                    {
+                        title: 'User List',
+                        userlist: docs
+                    }
+                );
+            });
+        } else{
+            res.redirect('/login');
+        }
     });
 
     /* GET New User page. */
@@ -149,13 +156,8 @@ module.exports = function(app, passport) {
 
     });
     //return app;
-    function isLoggedIn(req, res, next){
-        if (req.isAuthenticated()){
-            return next;
-        }
-        res.redirect('/');
-    }
 };
+
 
 
 
