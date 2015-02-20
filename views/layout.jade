@@ -11,7 +11,8 @@ html
   body
     header
       div(id='nav')
-        div.email #{email}
+        if user
+          div.email #{user.local.name}
         ul
           li
             a(href='/') Home

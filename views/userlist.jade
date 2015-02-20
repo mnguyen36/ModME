@@ -8,13 +8,16 @@ block content
                 th Email
                 th ID
                 th
-            each user, i in userlist
+            each userInList, i in userlist
                 tr
-                    td #{user.username}
-                    td #{user.email}
-                    td #{user._id}
+                    td #{userInList.local.name}
+                    td #{userInList.local.email}
+                    td #{userInList._id}
                     td.remove
-                        button.removemodal(class="fancybox.iframe", href="/remove-user?userid=#{user._id}&username=#{user.username}")
+                        if (user._id.toString() != userInList._id.toString())
+                            button.removemodal(class="fancybox.iframe", href="/remove-user?userid=#{userInList._id}&username=#{userInList.local.name}")
+                        else
+                            |This is you.
 
         div.add-new-user
             button.addusermodal(class="fancybox.iframe", href="/newuser") Add New User
