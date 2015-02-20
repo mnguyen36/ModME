@@ -7,3 +7,6 @@ fancybox.js
 
 heroku apps:
 mongo: $ heroku addons:add mongolab
+
+npm install 
+npm start
