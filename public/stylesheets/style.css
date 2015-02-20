@@ -8,74 +8,6 @@ body{
   margin-left: auto;
   margin-right: auto;
 }
-table.user-table{
-  width:800px;
-  font-family:Arial, Helvetica, sans-serif;
-  font-size:12px;
-  -moz-border-radius:3px;
-  -webkit-border-radius:3px;
-  border-radius:3px;
-}
-
-table.user-table, .user-table th{
-  background-color: #f2f2f2;
-  text-indent: 1%;
-  text-align: left;
-  table-layout: fixed;
-  border-collapse: collapse;
-  /*width: 100%;*/
-  /*border: 1px solid #ccc;*/
-  height: 40px;
-}
-
-
-.user-table tr:nth-child(odd){
-  background-color: #d1d1d1;
-}
-
-.user-table tr:nth-child(eve){
-  background-color: #ffffff;
-}
-
-.user-table th{
-  /*padding:21px 25px 22px 25px;*/
-  border-top:1px solid #fafafa;
-  border-bottom:1px solid #e0e0e0;
-
-  background: #ededed;
-  background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
-  background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
-}
-
-.user-table td{
-  /*left: 10px;*/
-  height: 50px;
-  width: 100%;
-}
-
-.user-table td.remove{
-  text-align: center;
-}
-.user-table button{
-  position: relative;
-  height: 50px;
-  width : 50px;
-  /*width: 1%;*/
-  left:-10px;
-}
-
-.add-new-user{
-  padding: 10px;
-  text-align: center;
-  height: 50px;
-}
-.add-new-user button{
-  height: 50px;
-  width: 200px;
-}
-
-
-
 
 #nav {
   width: 100%;
@@ -103,7 +35,9 @@ table.user-table, .user-table th{
   padding: 8px 15px;
   text-decoration: none;
   color: #ffffff;
-  border-right: 1px solid #ccc; }
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
 #nav li:first-child a {
   border-left: 1px solid #ccc; }
 #nav li a:hover {
@@ -125,8 +59,6 @@ table.user-table, .user-table th{
 
 .center-column input, .center-column button{
   width: 175px;
-  margin-left: 10px;
-  margin-top: 10px;
   padding: 10px;
 }
 .center-column button{

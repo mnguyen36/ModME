@@ -1,2 +1,4 @@
 extends layout
 block content
+    if user
+        div.homescreen  Hi #{user.local.name}

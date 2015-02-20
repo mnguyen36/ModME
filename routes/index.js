@@ -2,9 +2,6 @@
 //var router = express.Router();
 //var passport = require('passport');
 var bcrypt   = require('bcrypt-nodejs');
-
-
-
 module.exports = function(app, passport) {
     //var router = app.router;
 
@@ -152,7 +149,6 @@ module.exports = function(app, passport) {
 //REMOVE USER
     app.get('/remove-user', function (req, res) {
 
-        // query strings: (name, userid)
         res.render('removemodal', {
             userid: req.query.userid,
             username: req.query.username

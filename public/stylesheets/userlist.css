@@ -1,10 +1,94 @@
+table.user-table{
+    width:800px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+}
+
+table.user-table, .user-table th{
+    background-color: #f2f2f2;
+    text-indent: 1%;
+    text-align: left;
+    table-layout: fixed;
+    border-collapse: collapse;
+    /*width: 100%;*/
+    /*border: 1px solid #ccc;*/
+    height: 40px;
+}
+
+
+.user-table tr:nth-child(odd){
+    background-color: #d1d1d1;
+}
+
+.user-table tr:nth-child(eve){
+    background-color: #ffffff;
+}
+
+.user-table th{
+    /*padding:21px 25px 22px 25px;*/
+    border-top:1px solid #fafafa;
+    border-bottom:1px solid #e0e0e0;
+
+    background: #ededed;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+    background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+}
+
+.user-table td{
+    /*left: 10px;*/
+    height: 50px;
+    width: 100%;
+}
+
+.user-table td.remove{
+    text-align: center;
+}
+.user-table button{
+    position: relative;
+    height: 50px;
+    width : 50px;
+    /*width: 1%;*/
+    left:-10px;
+}
+
+.add-new-user{
+    padding: 10px;
+    text-align: center;
+    height: 50px;
+}
+.add-new-user button{
+    height: 50px;
+    width: 200px;
+}
+
+
 button.removemodal{
+    -webkit-transition-duration: 0.8s;
+    -moz-transition-duration: 0.8s;
+    -o-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    transition-property: transform;
+
+    overflow:hidden;
+
     border: none;
-    top: -3px;
     left: 0;
-    height: 25px;
+    height:25px;
     width: 25px;
-    background: url('/images/fancybox/fancybox_sprite.png' ) 0 0;
-    background-size: 30px;
+    background: url('/images/remove.png');
+    background-size: 25px;
     /*background*/
+}
+
+button.removemodal:hover{
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
 }

@@ -13,15 +13,26 @@ html
       div(id='nav')
         if user
           div.email #{user.local.name}
-        ul
-          li
-            a(href='/') Home
-          li
-            a(href='userlist') Users
-          li
-            a(href='/signup') Signup
-          li
-            a(href='/login') Login
+          ul
+            li
+              |&nbsp;
+            li
+              a(href='/') Home
+            li
+              a(href='userlist') Users
+            li
+              a(href='/logout') Log out
+
+        else
+          ul
+            li
+              a(href='/') Home
+            li
+              a(href='userlist') Users
+            li
+              a(href='/signup') Signup
+            li
+              a(href='/login') Login
 
 
   block content
