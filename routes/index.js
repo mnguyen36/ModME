@@ -10,7 +10,14 @@ module.exports = function(app, passport) {
 
     /* GET home page. */
     app.get('/', function (req, res, next) {
-        res.render('index', {title: 'ModME'});
+        var email = "";
+        if (req.isAuthenticated()){
+            email = req["user"].local.email;
+        }
+        res.render('index', {
+            title: 'ModME',
+            email : email
+        });
     });
 
     /* GET Hello World page. */
@@ -29,7 +36,7 @@ module.exports = function(app, passport) {
         function (req, res) {
 
             if (req.isAuthenticated()){
-                res.redirect('what');
+                res.redirect('/');
             }
             res.render('login',
                 {
@@ -41,7 +48,7 @@ module.exports = function(app, passport) {
     );
 
     app.post('/login', passport.authenticate('local', {
-        successRedirect: '/what',
+        successRedirect: '/userlist',
         failureRedirect: '/login?login',
         failureFlash: true
     }));
@@ -75,11 +82,13 @@ module.exports = function(app, passport) {
     /* GET Userlist page. */
     app.get('/userlist', function (req, res) {
         if (req.isAuthenticated()){
+            var email = req['user'].local.email;
             var db = req.db;
             var collection = db.get('usercollection');
             collection.find({}, {}, function (e, docs) {
                 res.render('userlist',
                     {
+                        email: email,
                         title: 'User List',
                         userlist: docs
                     }
@@ -92,7 +101,14 @@ module.exports = function(app, passport) {
 
     /* GET New User page. */
     app.get('/newuser', function (req, res) {
-        res.render('newuser', {title: 'Add New User'});
+        var email = "";
+        if (req.isAuthenticated()){
+            email = req["user"].local.email;
+        }
+        res.render('newuser', {
+            title: 'Add New User',
+            email: email
+        });
     });
 
     /* POST to Add User Service */
@@ -128,6 +144,7 @@ module.exports = function(app, passport) {
 
 //REMOVE USER
     app.get('/remove-user', function (req, res) {
+
         // query strings: (name, userid)
         res.render('removemodal', {
             userid: req.query.userid,
