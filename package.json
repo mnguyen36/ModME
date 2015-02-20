@@ -2,7 +2,9 @@
   "name": "ModME",
   "version": "0.0.1",
   "private": true,
-  "engines": "2.5.x",
+  "engines": {
+    "vesion": "2.5.x"
+  },
   "scripts": {
     "start": "node ./bin/www"
   },
