@@ -1,6 +1,7 @@
 var express         = require('express');
 var path            = require('path');
-var favicon         = require('serve-favicon');
+//var mongo           = require('mongodb');
+//var favicon         = require('serve-favicon');
 var logger          = require('morgan');
 var cookieParser    = require('cookie-parser');
 var bodyParser      = require('body-parser');
@@ -9,7 +10,6 @@ var flash           = require('connect-flash');
 var session         = require('express-session');
 var morgan          = require('morgan');
 var passport        = require('passport');
-var mongo           = require('mongodb');
 var monk            = require('monk');
 
 var db = monk('mongodb://heroku_app33971358:jf6h2nhn6ftabihaevie5ciiu8@ds043971.mongolab.com:43971/heroku_app33971358');
@@ -55,7 +55,7 @@ app.use(morgan('dev')); // log every request to the console
 
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
+    app.use(function (err, req, res) {
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
@@ -66,7 +66,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res) {
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,

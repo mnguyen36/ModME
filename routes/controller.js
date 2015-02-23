@@ -1,6 +1,6 @@
 module.exports = function(app, passport) {
     /* GET home page. */
-    app.get('/', function (req, res, next) {
+    app.get('/', function (req, res) {
         var user = "";
         if (req.isAuthenticated()){
             user = req["user"];
