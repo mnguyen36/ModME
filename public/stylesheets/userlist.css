@@ -5,11 +5,10 @@ table.user-table{
     -moz-border-radius:3px;
     -webkit-border-radius:3px;
     border-radius:3px;
-    color: #000000;
+    color: #7c7c7c;
 }
 
 table.user-table, .user-table th{
-    background-color: #f2f2f2;
     text-indent: 1%;
     text-align: left;
     table-layout: fixed;
@@ -21,12 +20,14 @@ table.user-table, .user-table th{
 
 
 .user-table tr:nth-child(odd){
-    background-color: #d1d1d1;
+    background-color: #330008;
 }
 
 .user-table tr:nth-child(eve){
-    background-color: #ffffff;
+    background-color: #310008;
 }
+
+
 .hideme{
     opacity: 0;
     transition: opacity 1s;
@@ -40,11 +41,9 @@ table.user-table, .user-table th{
 
 .user-table th{
     /*padding:21px 25px 22px 25px;*/
-    border-top:1px solid #fafafa;
     border-bottom:1px solid #e0e0e0;
 
-    background: #ededed;
-    background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+    background: -webkit-gradient(linear, left top, left bottom, from(#310008), to(#330008));
     background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
 }
 
@@ -68,7 +67,6 @@ table.user-table, .user-table th{
 }
 
 .add-new-user{
-    padding: 10px;
     text-align: center;
     height: 50px;
 }
@@ -79,15 +77,7 @@ table.user-table, .user-table th{
 
 
 button.removemodal{
-    -webkit-transition-duration: 0.8s;
-    -moz-transition-duration: 0.8s;
-    -o-transition-duration: 0.8s;
-    transition-duration: 0.8s;
 
-    -webkit-transition-property: -webkit-transform;
-    -moz-transition-property: -moz-transform;
-    -o-transition-property: -o-transform;
-    transition-property: transform;
 
     overflow:hidden;
 
@@ -100,8 +90,7 @@ button.removemodal{
     /*background*/
 }
 
-button.removemodal:hover{
-    -webkit-transform:rotate(90deg);
-    -moz-transform:rotate(90deg);
-    -o-transform:rotate(90deg);
+
+.left input{
+    width: 200px;
 }

@@ -63,17 +63,15 @@ $(document).ready(function() {
         function _filter(row) {
             var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
             row.className = text.indexOf(val) === -1 ? 'hideme' : 'showme';
-            //$(this)
-            //    .animate({padding:0})
-            //    .wrapInner('<div />')
-            //    .children()
-            //    .slideUp(function(){
-            //});
-            //if (text.indexOf(val) ===-1){
-            //    row.slideUp(function(){
-            //        row.remove();
-            //    });
-            //}
+            $('.hideme')
+                .children()
+                .slideUp()
+            ;
+            $('.showme')
+                .children()
+                .slideDown()
+            ;
+
 
         }
 

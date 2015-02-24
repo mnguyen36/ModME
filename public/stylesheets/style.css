@@ -1,14 +1,12 @@
 body{
   font-family:Arial, Helvetica, sans-serif;
   font-size:12px;
-  background: radial-gradient(at top, #394c98, #000118) fixed;
+  /*background: -webkit-radial-gradient(50% -10%, #330008, #000118) fixed;*/
+  /*background: radial-gradient(at  10% -10%, #d1d1d1, #ffffff) no-repeat;*/
+  background: #3f0708;
   color: white;
   margin:0;
   height: 100vh;
-}
-.center{
-  margin-left: auto;
-  margin-right: auto;
 }
 
 #nav {
@@ -29,28 +27,28 @@ body{
   float: left;
 }
 #nav li a {
+  font-size: 18px;
   display: block;
   padding: 8px 15px;
   text-decoration: none;
   color: #ffffff;
+  margin-top: 50px;
   /*border-bottom: 1px solid #ccc;*/
 }
 #nav li:first-child a {}
 #nav li a:hover {
-  color: #1a3153;
-  /*background-color: #fff; */
+  color: #d1d1d1;
+  border-bottom: 2px solid;
 }
 
+.main{
+  width: 1000px;
+  margin-top: 150px;
+  margin-left: 150px;
+}
 .center-column{
-  height: 100vh;
-  width:800px;
-  margin-top: 100px;
-  margin-left: auto;
-  margin-right: auto;
-  vertical-align: top;
-  /*-webkit-box-shadow: 0 10px 25px rgba(06, 110, 0, 0.5);*/
-  /*-moz-box-shadow: 0 10px 25px rgba(06, 110, 0, 0.5);*/
-  /*box-shadow: 0 10px 25px rgba(6, 0, 110, 0.5);*/
+  float: left;
+
 }
 
 .center-column input, .center-column button{
@@ -59,6 +57,17 @@ body{
 }
 .center-column button{
   margin-right: 0;
+}
+
+.center-column label{
+  padding-top: 20px;
+  float: left;
+  clear: left;
+  width: 100px;
+  text-align: left;
+}
+.center-column input{
+  float: left;
 }
 
 .email{
@@ -74,12 +83,24 @@ body{
 }
 
 .logo{
-  margin-top: 50px;
-  margin-left: 50px;
-  height: 60px;
-  width: 60px;
+  margin-top: 20px;
+  margin-left: 20px;
+  height: 100px;
+  width: 100px;
   float: left;
-  background-image: url("../images/logo.png");
-  background-size: 60px 60px;
+  background-image: url("../images/octo-log-m-large.png");
+  background-size: 100px 100px;
   background-repeat: no-repeat;
+}
+
+
+.left{
+  height: 500px;
+  width: 200px;
+  float: left;
+  /*background-color: blue;*/
+}
+
+.right{
+  float: left;
 }

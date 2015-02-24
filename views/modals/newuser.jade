@@ -1,13 +1,16 @@
 link(rel='stylesheet', href='/stylesheets/style.css')
+link(rel='stylesheet', href='/stylesheets/newuser.css')
 
 div.center-column
-    form(action="/userlist/adduser", method='post')
-        label(for="inputUserName") Name
-        input#inputUserName(type="text", placeholder="username", name="username", autofocus)
-        br
-        label(for="inputUserEmail") Email
-        input#inputUserEmail(type="text", placeholder="useremail", name="useremail")
-        br
-        label(for="inputPassword") Password
-        input#inputPassword(type="password", name = "password")
+    div.usermain
+        form(action="/userlist/adduser", method='post')
+            label(for="inputUserName") Name:
+            input#inputUserName(type="text", placeholder="username", name="username", autofocus)
+            br
+            label(for="inputUserEmail") Email
+            input#inputUserEmail(type="text", placeholder="useremail", name="useremail")
+            br
+            label(for="inputPassword") Password
+            input#inputPassword(type="password", name = "password")
+    div.submain
         button#btnSubmit(type="submit" onclick="parent.$.fancybox.close()") Add
