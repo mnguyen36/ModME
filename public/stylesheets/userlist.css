@@ -5,6 +5,7 @@ table.user-table{
     -moz-border-radius:3px;
     -webkit-border-radius:3px;
     border-radius:3px;
+    color: #000000;
 }
 
 table.user-table, .user-table th{
@@ -26,6 +27,16 @@ table.user-table, .user-table th{
 .user-table tr:nth-child(eve){
     background-color: #ffffff;
 }
+.hideme{
+    opacity: 0;
+    transition: opacity 1s;
+    height: 0;
+}
+.showme{
+
+    opacity: 1;
+    transition: opacity 1s;
+}
 
 .user-table th{
     /*padding:21px 25px 22px 25px;*/
@@ -45,6 +56,8 @@ table.user-table, .user-table th{
 
 .user-table td.remove{
     text-align: center;
+    transition:width 2s, height 2s, background-color 2s, transform 2s;
+
 }
 .user-table button{
     position: relative;

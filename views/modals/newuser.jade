@@ -3,7 +3,7 @@ link(rel='stylesheet', href='/stylesheets/style.css')
 div.center-column
     form(action="/userlist/adduser", method='post')
         label(for="inputUserName") Name
-        input#inputUserName(type="text", placeholder="username", name="username")
+        input#inputUserName(type="text", placeholder="username", name="username", autofocus)
         br
         label(for="inputUserEmail") Email
         input#inputUserEmail(type="text", placeholder="useremail", name="useremail")

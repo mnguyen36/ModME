@@ -1,6 +1,8 @@
 extends layout
 block content
-    div.container
+    div.container.center-column
+        if message
+            div(class = "alert alert-danger") #{message}
         form(action="/login" method = "post")
             label Email
             input(type="text", name="email")

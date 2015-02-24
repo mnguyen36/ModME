@@ -2,7 +2,8 @@ extends layout
 block content
     link(rel="stylesheet", href='/stylesheets/userlist.css')
     div.center-column
-        table.user-table.center.sortable
+        input(type="search", class="light-table-filter", data-table="order-table", placeholder="filter")
+        table.user-table.center.sortable.order-table.table
             thead
                 th Name
                 th Email
@@ -19,6 +20,6 @@ block content
                         else
                             |This is you.
         div.add-new-user
-            button(class="addusermodal fancybox.iframe", href="/userlist/newuser") Add New User
+        button(class="addusermodal fancybox.iframe", href="/userlist/newuser") Add New User
     script(src="/javascripts/userlist.js")
 

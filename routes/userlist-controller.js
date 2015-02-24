@@ -26,7 +26,7 @@ module.exports = function(app, passport){
         if (req.isAuthenticated()){
             user = req["user"];
         }
-        res.render('newuser', {
+        res.render('modals/newuser', {
             title: 'Add New User',
             user: user
         });
@@ -68,7 +68,7 @@ module.exports = function(app, passport){
 
     app.get('/remove-user', function (req, res) {
 
-        res.render('removemodal', {
+        res.render('modals/removemodal', {
             userid: req.query.userid,
             username: req.query.username
         });

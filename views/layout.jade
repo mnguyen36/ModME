@@ -10,29 +10,28 @@ html
 
   body
     header
+      div.logo
       div(id='nav')
         if user
           div.email #{user.local.name}
           ul
             li
-              |&nbsp;
+              a(href='/') HOME
             li
-              a(href='/') Home
+              a(href='userlist') USERS
             li
-              a(href='userlist') Users
-            li
-              a(href='/logout') Log out
+              a(href='/logout') LOG OUT
 
         else
           ul
             li
-              a(href='/') Home
+              a(href='/') HOME
             li
-              a(href='userlist') Users
+              a(href='userlist') USERS
             li
-              a(href='/signup') Signup
+              a(href='/signup') SIGN UP
             li
-              a(href='/login') Login
+              a(href='/login') LOGIN
 
 
   block content
