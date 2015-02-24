@@ -1,14 +1,15 @@
 extends layout
 block content
-    div.container.center-column
-        if message
-            div(class = "alert alert-danger") #{message}
-        form(action="/login" method = "post")
-            label Email
-            input(type="text", name="email")
-            br
-            label Password
-            input(type="password", name="password")
-            button(type="submit") Login
+    div.main
+        div.container.center-column
+            if message
+                div(class = "alert alert-danger") #{message}
+            form(action="/login" method = "post")
+                label Email
+                input(type="text", name="email")
+                br
+                label Password
+                input(type="password", name="password")
+                button(type="submit") Login
 
-        p Sign Up <a href="/signup"> Sign Up </a>
+            p Sign Up <a href="/signup"> Sign Up </a>
