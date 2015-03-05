@@ -8,7 +8,6 @@ $(document).ready(function() {
     var currentIndex = 0;
 
     nav.each(function(index) {
-        console.log(window.location.hash);
 
         var currentTab = $(this).find('a');
         if (currentTab.attr('data-hash')==window.location.hash.replace('#', '')){
@@ -37,24 +36,38 @@ $(document).ready(function() {
         hideContent();
         switch(window.location.hash){
             case '#userlist':
-                $('.center-column').slideDown();
+                $('#usertable').slideDown();
                 updateTable();
                 break;
             case '#/':
                 $('.homescreen').slideDown();
                 break;
+            case '#login':
+                $('#login').slideDown();
+                break;
+
         }
     });
 
     $(document).on('keydown', function(e) {
-        console.log(e.keyCode);
-        console.log(currentIndex);
+
         nav.each(function(index){
             $(nav.get(index)).removeClass('selected');
         });
-        $(nav.get(currentIndex-1)).toggleClass('selected');
-        console.log($(nav.get(currentIndex-1)).find('a'));
-        updateContent();
+        if (e.keyCode == 38 || e.keyCode ==37){
+            //up
+            if (currentIndex>0){
+                currentIndex--;
+            }
+
+        } else if (e.keyCode == 40 || e.keyCode == 39){
+            if (currentIndex<3){
+                currentIndex++;
+            }
+            //down
+        }
+        $(nav.get(currentIndex)).toggleClass('selected');
+        window.location.hash = $(nav.get(currentIndex)).find('a').attr('data-hash');
     });
 });
 
@@ -62,7 +75,7 @@ function updateContent() {
     hideContent();
     switch(window.location.hash){
         case '#userlist':
-            $('.center-column').slideDown();
+            $('#usertable').slideDown();
             updateTable();
             break;
         case '#/':

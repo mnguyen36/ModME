@@ -1,16 +1,18 @@
 $(document).ready(function() {
     $(document).on('keypress', function(e) {
-        var tag = e.target.tagName.toLowerCase();
-        if (tag != 'input') {
-            $.fancybox.open({
-                width: '500px',
-                height: '500px',
-                maxHeight: '300px',
-                href: "/userlist/newuser",
-                type: "iframe",
-                'afterShow': function () {
-                }
-            });
+        if (e.keyCode == 97) {
+            var tag = e.target.tagName.toLowerCase();
+            if (tag != 'input') {
+                $.fancybox.open({
+                    width: '500px',
+                    height: '500px',
+                    maxHeight: '300px',
+                    href: "/userlist/newuser",
+                    type: "iframe",
+                    'afterShow': function () {
+                    }
+                });
+            }
         }
 
     });
