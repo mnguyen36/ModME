@@ -2,3 +2,8 @@ extends layout
 block content
     if user
         div.homescreen  Hi #{user.local.name}
+    else
+        div.homescreen
+            h1 ModME
+            p Welcome to ModME, please login to continue or sign up to enjoy our services!
+    include userlist.jade

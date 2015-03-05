@@ -1,0 +1,14 @@
+extends layout
+block content
+    form(action="/tasks", id="taskform", method='post')
+        label(for="inputUserName") Title:
+        input#inputUserName(type="text", placeholder="Title", name="title", autofocus)
+        br
+        button#btnSubmit(type="submit" onclick="parent.$.fancybox.close()") Add
+
+
+    textarea(form="taskform", name="task")
+
+    each task, i in tasklist
+        p #{task.title}
+        p #{task.task}

@@ -9,12 +9,8 @@ module.exports = function(app, passport){
             var db = req.db;
             var collection = db.get('users');
             collection.find({}, {}, function (e, docs) {
-                res.render('userlist',
-                    {
-                        user: user,
-                        title: 'User List',
-                        userlist: docs
-                    }
+                res.json(
+                    docs
                 );
             });
         } else{

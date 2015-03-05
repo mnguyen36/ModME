@@ -1,10 +1,6 @@
-
 $(document).ready(function() {
     $(document).on('keypress', function(e) {
         var tag = e.target.tagName.toLowerCase();
-
-        console.log(String.fromCharCode(e.which));
-        console.log(tag);
         if (tag != 'input') {
             $.fancybox.open({
                 width: '500px',
@@ -26,7 +22,7 @@ $(document).ready(function() {
             height:'auto',
             maxHeight:'130px',
             'afterClose':function () {
-                window.location.reload();
+                updateTable();
             }
         }
     );
@@ -36,7 +32,7 @@ $(document).ready(function() {
             height:'500px',
             maxHeight:'300px',
             'afterClose':function () {
-                window.location.reload();
+                updateTable();
             }
         }
     )
@@ -45,11 +41,8 @@ $(document).ready(function() {
 
 (function(document) {
     'use strict';
-
     var LightTableFilter = (function(Arr) {
-
         var _input;
-
         function _onInputEvent(e) {
             _input = e.target;
             var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
@@ -59,22 +52,16 @@ $(document).ready(function() {
                 });
             });
         }
-
         function _filter(row) {
             var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
             row.className = text.indexOf(val) === -1 ? 'hideme' : 'showme';
             $('.hideme')
-                .children()
-                .slideUp()
+                .children().slideUp()
             ;
             $('.showme')
-                .children()
-                .slideDown()
+                .children().slideDown()
             ;
-
-
         }
-
         return {
             init: function() {
                 var inputs = document.getElementsByClassName('light-table-filter');
@@ -84,7 +71,6 @@ $(document).ready(function() {
             }
         };
     })(Array.prototype);
-
     document.addEventListener('readystatechange', function() {
         if (document.readyState === 'complete') {
             LightTableFilter.init();
@@ -92,3 +78,10 @@ $(document).ready(function() {
     });
 
 })(document);
+
+function moveToMe (e){
+    var ribbon = $('.ribbon');
+    ribbon.animate({
+        "top": $(e).position().top
+    }, 1);
+}

@@ -1,30 +1,18 @@
-extends layout
 block content
     link(rel="stylesheet", href='/stylesheets/userlist.css')
-    div.main
-        div.left
+    div.center-column
+        div.filter
             input(type="search", class="light-table-filter", data-table="order-table", placeholder="filter")
-            div.add-new-user
-                button(class="addusermodal fancybox.iframe", href="/userlist/newuser") Add New User
+        div.add-new-user
+            button(class="addusermodal fancybox.iframe", href="/userlist/newuser") Add New User
+        table#user-table.user-table.center.sortable.order-table.table
+            thead
+                th Name
+                th Email
+                th ID
+                th
+            tbody
 
-        div.center-column
-            table.user-table.center.sortable.order-table.table
-                thead
-                    th Name
-                    th Email
-                    th ID
-                    th
-                each userInList, i in userlist
-                    tr
-                        td #{userInList.local.name}
-                        td #{userInList.local.email}
-                        td #{userInList._id}
-                        td.remove
-                            if (user._id.toString() != userInList._id.toString())
-                                button(class="removemodal fancybox.iframe", href="/remove-user?userid=#{userInList._id}&username=#{userInList.local.name}")
-                            else
-                                |This is you.
-        //div.add-new-user
-        //button(class="addusermodal fancybox.iframe", href="/userlist/newuser") Add New User
-    script(src="/javascripts/userlist.js")
+
+        script(src="/javascripts/userlist.js")
 

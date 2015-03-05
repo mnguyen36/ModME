@@ -17,6 +17,8 @@ module.exports = function(app, passport) {
 
     require('./userlist-controller.js')(app, passport);
 
+    require('./task-controller.js')(app);
+
     app.get('/logout',
         function (req, res) {
             req.logout();
