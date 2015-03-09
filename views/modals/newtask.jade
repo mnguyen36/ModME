@@ -1,0 +1,8 @@
+div.center-column
+    form(action="/tasks/add", id="taskform", method='post')
+        label(for="inputUserName") Title:
+        input#inputUserName(type="text", placeholder="Title", name="title", autofocus)
+        br
+        textarea(form="taskform", name="task")
+        br
+        button#btnSubmit(type="submit" onclick="parent.$.fancybox.close()") Add

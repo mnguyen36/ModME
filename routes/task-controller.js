@@ -1,31 +1,27 @@
 var ObjectID = require('mongodb').ObjectID;
+var async = require('async');
 module.exports = function(app){
 
     app.get('/tasks', function(req, res){
-        var db = req.db;
-        var TaskDAO = db.get('tasks');
-        var UserDAO = db.get('users');
-        var modelUser = req['user'];
-        var tasklist = [];
-        UserDAO.findById({
-            "_id":modelUser.id
-        }, function( err, doc){
-            tasklist.push(doc);
-        });
-        //var ta/sk = user.task;
-        //var task = TaskDAO.find({
-        //    "_id":dbUser.task
-        //});
-        //tasklist.push(task);
+        if (req.isAuthenticated()) {
+            var db = req.db;
+            var modelUser = req['user'];
+            var TaskDAO = db.get('tasks');
+            var taskList = [];
 
-        res.render('tasks',{
-            title:"Tasks",
-            user: req['user'],
-            tasklist:tasklist
-        });
+            async.each(modelUser.tasks, function(entry, callback){
+                TaskDAO.findById(entry._id, function(err, doc){
+                    taskList.push(doc);
+                    callback();
+                })
+            }, function(err){
+                res.json(taskList);
+            });
+
+        } else {}
     });
 
-    app.post('/tasks', function(req, res){
+    app.post('/tasks/add', function(req, res){
         var db = req.db;
         var user = req['user'];
         var taskCollection = db.get('tasks');
@@ -36,17 +32,23 @@ module.exports = function(app){
             "title":req.body.title,
             "task":req.body.task
         });
+        user.tasks.push({
+            "_id":id
+        });
         userCollection.update(
             user.id,
             {
                 $set: {
-                    task:id
+                    tasks:user.tasks
                 }
             }
         );
 
-        res.location('tasks');
-        res.redirect('tasks');
+        res.send("/#tasks");
+
+    });
+
+    app.get('/tasks/add', function(req, res){
 
     })
 

@@ -42,6 +42,7 @@ body{
   float: left;
   background: linear-gradient(to top, rgb(82, 161, 236), rgba(82, 161, 236, 0.30)); /* Standard syntax */
   border-top-left-radius: 5px;
+  box-shadow: 4px 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .logo{
@@ -116,6 +117,9 @@ body{
 
 .filter input{
   height: 50px;
+}
+.filter input:focus{
+  box-shadow :  inset 0px 0px 30px #4382bf;
 }
 
 .myButton {

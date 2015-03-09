@@ -3,7 +3,9 @@ var userListData = [];
 
 // DOM Ready =============================================================
 $(document).ready(function() {
-
+    //if (viewUser != null)
+    //    console.log(viewUser.local.name);
+    //
     var nav = $('.nav li');
     var currentIndex = 0;
 
@@ -45,6 +47,10 @@ $(document).ready(function() {
             case '#login':
                 $('#login').slideDown();
                 break;
+            case '#tasks':
+                $('#task').slideDown();
+                updateTasks();
+                break;
 
         }
     });
@@ -81,6 +87,13 @@ function updateContent() {
         case '#/':
             $('.homescreen').slideDown();
             break;
+        case '#login':
+            $('#login').slideDown();
+            break;
+        case '#tasks':
+            $('#task').slideDown();
+            updateTasks();
+            break;
     }
 }
 
@@ -102,5 +115,18 @@ function updateTable(){
             tableContent += '</tr>';
         });
         $('#user-table tbody').html(tableContent);
+    });
+}
+
+function updateTasks(){
+    var tableContent = '';
+
+    $.getJSON('/tasks', function(data){
+        $.each(data, function(){
+            tableContent += '<tr>';
+            tableContent += '<td>'+this.title+'</td>';
+            tableContent += '<td>'+this.task+'</td>';
+        });
+        $('#task-table tbody').html(tableContent);
     });
 }
