@@ -2,7 +2,7 @@ $(document).ready(function() {
     $(document).on('keypress', function(e) {
         if (e.keyCode == 97) {
             var tag = e.target.tagName.toLowerCase();
-            if ((tag != 'input') && (tag!='textarea')) {
+            if ((tag != 'input') && (tag!='textarea') && (window.location.hash == '#userlist')) {
                 $.fancybox.open({
                     width: '500px',
                     height: '500px',

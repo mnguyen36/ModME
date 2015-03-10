@@ -1,5 +1,3 @@
-// Userlist data array for filling in info box
-var userListData = [];
 
 // DOM Ready =============================================================
 $(document).ready(function() {
@@ -75,6 +73,18 @@ $(document).ready(function() {
         $(nav.get(currentIndex)).toggleClass('selected');
         window.location.hash = $(nav.get(currentIndex)).find('a').attr('data-hash');
     });
+    $("button.addtaskmodal").fancybox(
+        {
+            width:'500px',
+            height:'500px',
+            maxHeight:'300px',
+            'afterClose':function () {
+                updateTasks();
+            }
+        }
+    );
+
+
 });
 
 function updateContent() {
@@ -111,7 +121,7 @@ function updateTable(){
             tableContent += '<td>'+this.local.name+'</td>';
             tableContent += '<td>' + this.local.email + '</td>';
             tableContent += '<td>'+this._id+'</td>';
-            tableContent += '<td>'
+            tableContent += '<td>';
             tableContent += '</tr>';
         });
         $('#user-table tbody').html(tableContent);
@@ -120,13 +130,33 @@ function updateTable(){
 
 function updateTasks(){
     var tableContent = '';
+    var $grid = $('#grid');
+    $grid.shuffle('destroy');
 
     $.getJSON('/tasks', function(data){
         $.each(data, function(){
-            tableContent += '<tr>';
-            tableContent += '<td>'+this.title+'</td>';
-            tableContent += '<td>'+this.task+'</td>';
+            tableContent += '<div class="task-card"  data-title='+this.title+' data-groups='+'["task"]'+'>';
+            tableContent += '<div class="task-title" task-title='+this.title+'>'+this.title+'</div>';
+            tableContent += '<div class="task-content">'+this.task+'</div>';
+            tableContent += '</div>';
         });
-        $('#task-table tbody').html(tableContent);
+        $('.task-center').html(tableContent);
+
+
+    }).done(function(){
+
+        $grid.shuffle({
+            itemSelector: '.task-card'
+        });
+        $('.js-shuffle-search').on('keyup change', function() {
+            var val = this.value.toLowerCase();
+
+            $grid.shuffle('shuffle', function($el, shuffle) {
+                var text = $.trim( $el.attr('data-title') ).toLowerCase();
+                return text.indexOf(val) !== -1;
+            });
+        });
     });
+
+
 }

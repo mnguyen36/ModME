@@ -25,4 +25,8 @@ module.exports = function(app, passport) {
             res.redirect('/');
         }
     );
+
+    app.get('/test', function(req, res){
+        res.render('test');
+    })
 };

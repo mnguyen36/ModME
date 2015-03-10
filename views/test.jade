@@ -1,0 +1,37 @@
+script(src="/javascripts/jquery-1.10.1.min.js")
+script(src="/javascripts/jquery.shuffle.min.js")
+script(src="/javascripts/test.js")
+link(rel='stylesheet', href='/stylesheets/test.css')
+body
+    #container
+        p.float-left Filter:
+        p.float-right
+        ul#filter
+            li
+                a.active(href="#" data-group="all") All
+            li
+                a(href="#" data-group="red") Red
+                a(href="#" data-group="green") Green
+                a(href="#" data-group="blue") Blue
+                a(href="#" data-group="numbers") Numbers
+                a(href="#" data-group="letters") Letters
+                a(href="#" data-group="square") Squares
+                a(href="#" data-group="circle") Circles
+
+            #grid
+                div(class="item blue" data-groups='["all", "numbers", "blue", "square"]') 3
+                div(class="item green" data-groups='["all", "numbers", "green", "square"]') 5
+                div(class="item blue" data-groups='["all", "letters", "blue", "square"]') D
+                div(class="item red" data-groups='["all", "numbers", "red", "square"]') 3
+                div(class="item red circle" data-groups='["all", "numbers", "red", "circle"]') 3
+                div(class="item red" data-groups='["all", "numbers", "red", "square"]') 3
+                div(class="item green circle" data-groups='["all", "numbers", "green", "circle"]') 3
+                div(class="item red" data-groups='["all", "numbers", "red", "square"]') 3
+                div(class="item green" data-groups='["all", "numbers", "green", "square"]') 3
+                div(class="item green circle" data-groups='["all", "numbers", "green", "square"]') 3
+                div(class="item blue" data-groups='["all", "numbers", "blue", "square"]') 3
+                div(class="item red" data-groups='["all", "numbers", "red", "square"]') 3
+                div(class="item blue circle" data-groups='["all", "numbers", "blue", "square"]') 3
+                div(class="item blue" data-groups='["all", "numbers", "blue", "square"]') 3
+                div(class="item blue" data-groups='["all", "numbers", "blue", "square"]') 3
+                div(class="item green" data-groups='["all", "numbers", "green", "square"]') 3

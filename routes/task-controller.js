@@ -49,6 +49,13 @@ module.exports = function(app){
     });
 
     app.get('/tasks/add', function(req, res){
+        if (req.isAuthenticated()){
+            var user = req["user"];
+            res.render('modals/newtask', {
+                title: 'Add New Task',
+                user: user
+            });
+        }
 
     })
 

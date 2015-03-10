@@ -1,7 +1,7 @@
 div.center-column
     form(action="/tasks/add", id="taskform", method='post')
-        label(for="inputUserName") Title:
-        input#inputUserName(type="text", placeholder="Title", name="title", autofocus)
+        label(for="task-title") Title:
+        input#task-title(type="text", placeholder="Title", name="title", autofocus)
         br
         textarea(form="taskform", name="task")
         br

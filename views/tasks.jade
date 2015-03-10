@@ -1,11 +1,7 @@
 block content
     div#task.center-column
-        table#task-table.user-table.center.sortable.order-table.table
-            thead
-                th(style="width:200px;") Title
-                th Task
-            tbody
         div.add-new-task
-            button(class="addusermodal fancybox.iframe", href="/tasks/add") Add New User
-
-
+            button(class="addtaskmodal fancybox.iframe", href="/tasks/add") Add New Task
+        input(class="filter__search js-shuffle-search" type="search" placeholder="Search..")
+        #grid.task-center
+        div(shuffle__sizer)

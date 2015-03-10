@@ -16,14 +16,14 @@ body{
   border-top-right-radius: 5px;
 
 
-  /*background: -webkit-gradient(linear, left bottom, left top, from(rgba(50,50,50,0.8)), to(rgba(80,80,80,0)), color-stop(.5,#333333)*/
-  );}
+}
 
 .page-container{
   float: left;
   width: 800px;
   height: 100%;
   background: url("../images/basic-logo-mm-opacity.png") center center no-repeat;
+  overflow: auto;
 
 }
 
@@ -43,6 +43,13 @@ body{
   background: linear-gradient(to top, rgb(82, 161, 236), rgba(82, 161, 236, 0.30)); /* Standard syntax */
   border-top-left-radius: 5px;
   box-shadow: 4px 2px 8px rgba(0, 0, 0, 0.4);
+}
+.center-column{
+  display: none;
+  position: relative;
+  left: 25px;
+  top: 25px;
+  width: 750px;
 }
 
 .logo{
@@ -160,3 +167,20 @@ body{
   top:1px;
 }
 
+.task-card{
+  float: left;
+  margin: 10px;
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(to top, rgb(82, 161, 236), rgba(82, 161, 236, 0.30)); /* Standard syntax */
+}
+.task-title{
+  background-color: white;
+  text-align: center;
+}
+#grid{
+  overflow: auto;
+  height: 500px;
+}
+.concealed{
+}

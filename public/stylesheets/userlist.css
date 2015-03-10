@@ -21,13 +21,6 @@ table.user-table, .user-table th{
     height: 40px;
 }
 
-.center-column{
-    display: none;
-    position: relative;
-    left: 25px;
-    top: 25px;
-}
-
 
 .user-table tr:nth-child(odd){
     background-color: #52a1ec;
