@@ -49,6 +49,9 @@ $(document).ready(function() {
                 $('#task').slideDown();
                 updateTasks();
                 break;
+            case '#container':
+                $('#container').slideDown();
+                break
 
         }
     });
@@ -65,7 +68,7 @@ $(document).ready(function() {
             }
 
         } else if (e.keyCode == 40 || e.keyCode == 39){
-            if (currentIndex<3){
+            if (currentIndex<4){
                 currentIndex++;
             }
             //down
@@ -104,6 +107,9 @@ function updateContent() {
             $('#task').slideDown();
             updateTasks();
             break;
+        case '#container':
+            $('#container').slideDown();
+            break
     }
 }
 

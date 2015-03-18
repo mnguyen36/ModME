@@ -1,11 +1,29 @@
 extends layout
 block content
+    script(src="/javascripts/socket.io.js")
+    script(src="/javascripts/socket-test.js")
     if user
         div.homescreen  Hi #{user.local.name}
     else
         div.homescreen
             h1 ModME
             p Welcome to ModME, please login to continue or sign up to enjoy our services!
+    time
+    #container.center-column
+        table#stats-table.user-table.center.sortable.order-table.table
+            thead
+                th Team
+                th 1
+                th 2
+                th 3
+                th 4
+                th 5
+                th 6
+                th 7
+                th 8
+                th 9
+                th total
+            tbody
     include userlist.jade
     include login.jade
     include tasks.jade
