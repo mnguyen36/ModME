@@ -1,5 +1,5 @@
 // creating a new websocket
-var socket = io.connect('http://localhost:3000');
+var socket = io.connect(window.location.hostname);
 // on every message recived we print the new datas inside the #container div
 socket.on('notification', function (data) {
     var plays = data.bsgame.plays;
