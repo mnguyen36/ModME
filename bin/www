@@ -9,15 +9,12 @@ var debug = require('debug')('ModME:server');
 var http = require('http');
 var fs = require ('fs');
 
-
 /**
  * Get port from environment and store in Express.
  */
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
-
-
 
 /**
  * Create HTTP server.
@@ -117,10 +114,8 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
-function doMainStuff() {
-    ftp.get( url, 'stats.xml', function(err, res){
-      console.log(res);
-    });
-    setTimeout(doMainStuff, 10 * 1000);
+function downloadStatsXml() {
+    ftp.get(url, 'stats.xml', function(err, res){});
+    setTimeout(downloadStatsXml, 10 * 1000);
 }
-doMainStuff();
+downloadStatsXml();

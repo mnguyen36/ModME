@@ -26,6 +26,8 @@ module.exports = function(app, passport) {
         }
     );
 
+    //app.register('.html', require('jade'));
+
     app.get('/test', function(req, res){
         res.render('test');
     })

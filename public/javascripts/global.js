@@ -87,6 +87,19 @@ $(document).ready(function() {
         }
     );
 
+    $('#colorpicker').spectrum({
+        width: '500px',
+        color:"#f00",
+        showInitial: true,
+        flat: true,
+        showInput: true,
+        move: function(color) {
+            console.log(color);
+            $('body').css({
+                background: "-webkit-gradient(linear, left top, right top, from(" + color._r+","+color._g+","+color._b + "), to(rgb(90,90,90))"
+            })
+        }
+    });
 
 });
 
