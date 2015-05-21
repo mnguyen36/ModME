@@ -30,6 +30,7 @@
     "socket.io": "*",
     "xml2js":"*",
     "ftp-get":"*",
-    "spectrum-colorpicker":"*"
+    "spectrum-colorpicker":"*",
+    "angular":"*"
   }
 }

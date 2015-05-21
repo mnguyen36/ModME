@@ -7,7 +7,7 @@
     "use strict";
 
     if (typeof define === 'function' && define.amd) { // AMD
-        define(['jquery'], factory);
+        define(['../../../node_modules/spectrum-colorpicker/docs/jquery-2.1.0'], factory);
     }
     else if (typeof exports == "object" && typeof module == "object") { // CommonJS
         module.exports = factory;
