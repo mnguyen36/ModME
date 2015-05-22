@@ -118,4 +118,4 @@ function downloadStatsXml() {
     ftp.get(url, 'stats.xml', function(err, res){});
     setTimeout(downloadStatsXml, 10 * 1000);
 }
-downloadStatsXml();
+//downloadStatsXml();
