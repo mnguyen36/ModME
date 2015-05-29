@@ -19,6 +19,8 @@ module.exports = function(app, passport) {
 
     require('./task-controller.js')(app);
 
+    require('./eval-template-controller.js')(app);
+
     app.get('/logout',
         function (req, res) {
             req.logout();

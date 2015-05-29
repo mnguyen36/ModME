@@ -7,11 +7,19 @@ angular.module('main.router', [])
 
             $stateProvider
                 .state('home', {
-                    url: '/home',
-                    templateUrl: '/partials/home.html',
+                    url: '',
+                    templateUrl: '/partials/templates.html',
                     controller: 'MainCtrl'
-                });
+                })
+                .state('template', {
+                    url:'/:templateId',
+                    templateUrl:'/partials/template.html',
+                    controller: 'TemplateCtrl'
+                })
 
-            $urlRouterProvider.otherwise('home');
+
+            ;
+
+            $urlRouterProvider.otherwise('');
         }
     ]);
