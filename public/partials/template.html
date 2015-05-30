@@ -1,29 +1,33 @@
 <div class="row">
     <!--<div class="large-2 columns small-3"><img src="http://placehold.it/80x80&text=[img]"/></div>-->
-    <div ng-repeat="question in questions" class="">
-        <p><a href="#">{{question.title}}</a></p>
-    </div>
+    <!--<ul class="tabs" data-tab>-->
+    <ul ng-repeat="question in questions" class="large-pull-5 tabs collapse columns">
+        <!--<p><a href="#">{{question.title}}</a></p>-->
+        <li class="medium-2 tab-title"><a>{{question.questionType}}</a></li>
+        <div class="large-8 columns">
+            <p><strong>Question: <br></strong>{{question.question}}</p>
+        </div>
+
+    </ul>
+    <!--</ul>-->
     <a href ng-click="toggleModal()" class="button">Add Question</a>
     <modal show='modalShown'>
-        <div class="row collapse">
+        <div class="row">
 
             <ul class="tabs" data-tab>
-                <div class="large-2 columns">
+                <div class="large-3  columns">
                     <li class="tab-title"><a ng-click="changeForm(0)">Multiple Choice</a></li>
                 </div>
-                <div class="large-2  columns">
+                <div class="large-3  columns">
 
-                    <li class="tab-title"><a ng-click="changeForm(1)">True False</a></li>
+                    <li class="tab-title"><a ng-click="changeForm(1)">True And False</a></li>
                 </div>
-                <div class="large-2  columns">
+                <div class="large-3  columns">
 
-                    <li class="tab-title"><a >Tab 3</a></li>
+                    <li class="tab-title"><a>Number Scale</a></li>
                 </div>
-                <div class="large-2  columns">
-                    <li class="tab-title"><a >Tab 4</a></li>
-                </div>
-                <div class="large-2  columns end">
-                    <li class="tab-title"><a >Tab 5</a></li>
+                <div class="large-3  columns end">
+                    <li class="tab-title"><a >Comment Responses</a></li>
                 </div>
             </ul>
         </div>

@@ -79,7 +79,7 @@ var modalTemplateHtml =
         "<div class='ng-modal' ng-show='show'>"+
         "<div class='reveal-modal' ng-show='show'>"+
         "<div ng-transclude></div>"+
-        "<a class='close-reveal-modal' ng-click='hideModal()'>&#215;</a>"+
+        //"<a class='close-reveal-modal' ng-click='hideModal()'>&#215;</a>"+
         "</div>"+
         "<div class='reveal-modal-bg' ng-click='hideModal()'></div>"+
         "</div>"
