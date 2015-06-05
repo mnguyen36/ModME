@@ -5,7 +5,7 @@ module.exports = function(app) {
         if (req.isAuthenticated()){
             user = req["user"];
         }
-        res.render('index', {
+        res.render('jade/index', {
             user : user
         });
     });

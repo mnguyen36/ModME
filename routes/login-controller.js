@@ -5,7 +5,7 @@ module.exports = function(app, passport) {
             if (req.isAuthenticated()) {
                 res.redirect('/');
             }
-            res.render('login',
+            res.render('jade/login',
                 {
                     title: 'LOGIN PAGE',
                     message: req.flash('loginMessage')

@@ -7,7 +7,6 @@
 var app = require('../app');
 var debug = require('debug')('ModME:server');
 var http = require('http');
-var fs = require ('fs');
 
 /**
  * Get port from environment and store in Express.
@@ -21,34 +20,8 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-var io = require('socket.io').listen(server);
+require('./socket.js')(server);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-
-var parseString = require('xml2js').parseString;
-var ftp = require('ftp-get');
-var url = "ftp://fanslive:livestats@ftp.netitor.com/geot/m-basebl/geot.xml";
-
-
-io.sockets.on('connection', function(socket) {
-
-  // watching the xml file
-  fs.watchFile('stats.xml', function(curr, prev) {
-    // on file change we can read the new xml
-    fs.readFile('stats.xml', function(err, data) {
-      if (err) throw err;
-      // parsing the new xml data and converting them into json file
-      parseString(data, function (err, result) {
-       socket.volatile.emit('notification', result);
-      });
-      // send the new data to the client
-    });
-  });
-
-});
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
@@ -114,8 +87,3 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
-function downloadStatsXml() {
-    ftp.get(url, 'stats.xml', function(err, res){});
-    setTimeout(downloadStatsXml, 10 * 1000);
-}
-//downloadStatsXml();

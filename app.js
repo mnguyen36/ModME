@@ -20,7 +20,7 @@ require('./config/passport')(passport);
 var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-app.use(favicon(__dirname + '/public/images/remove.png'));
+//app.use(favicon(__dirname + '/public/images/remove.png'));
 app.use(logger('dev'));
 app.use(bodyParser.json({ type: 'application/*+json' }));
 app.use(cookieParser());
@@ -38,6 +38,7 @@ app.use(function(req,res,next){
 });
 
 /// catch 404 and forwarding to error handler
+require('./routes/controller')(app, passport);
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
@@ -61,12 +62,10 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function (err, req, res) {
     res.status(err.status || 500);
-    res.render('error', {
+    res.render('jade/error', {
         message: err.message,
         error: {}
     });
 });
 
-// router/controllers for the backend
-require('./routes/controller')(app, passport);
 module.exports = app;

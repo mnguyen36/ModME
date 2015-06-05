@@ -1,7 +1,7 @@
 module.exports = function(app, passport){
 
     app.get('/signup', function (req, res) {
-        res.render('signup',{
+        res.render('jade/signup',{
             message: req.flash('signupMessage')
         })
     });
