@@ -12,23 +12,17 @@ var morgan          = require('morgan');
 var passport        = require('passport');
 var monk            = require('monk');
 
+// Monk for regular mongo usage
 var db = monk('mongodb://heroku_app33971358:jf6h2nhn6ftabihaevie5ciiu8@ds043971.mongolab.com:43971/heroku_app33971358');
-
+// Mongoose for user schema login/signup
 mongoose.connect('mongodb://heroku_app33971358:jf6h2nhn6ftabihaevie5ciiu8@ds043971.mongolab.com:43971/heroku_app33971358');
-
 require('./config/passport')(passport);
-
 var app = express();
-
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
-// uncomment after placing your favicon in /public
 app.use(favicon(__dirname + '/public/images/remove.png'));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.json({ type: 'application/*+json' }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 // session before passport.session
@@ -37,13 +31,12 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-// Make our db accessible to our router
+// Make db accessible to our router
 app.use(function(req,res,next){
     req.db = db;
     next();
 });
 
-require('./routes/controller')(app, passport);
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -74,4 +67,6 @@ app.use(function (err, req, res) {
     });
 });
 
+// router/controllers for the backend
+require('./routes/controller')(app, passport);
 module.exports = app;

@@ -1,36 +1,11 @@
 module.exports = function(app, passport) {
-    /* GET home page. */
-    app.get('/', function (req, res) {
-        var user = "";
-        if (req.isAuthenticated()){
-            user = req["user"];
-        }
-        res.render('index', {
-            title: 'ModME',
-            user : user
-        });
-    });
+
+    require('./home-controller.js')(app);
 
     require('./login-controller.js')(app, passport);
 
     require('./signup-controller.js')(app, passport);
 
-    require('./userlist-controller.js')(app, passport);
+    require('./user-controller.js')(app);
 
-    require('./task-controller.js')(app);
-
-    require('./eval-template-controller.js')(app);
-
-    app.get('/logout',
-        function (req, res) {
-            req.logout();
-            res.redirect('/');
-        }
-    );
-
-    //app.register('.html', require('jade'));
-
-    app.get('/test', function(req, res){
-        res.render('test');
-    })
 };

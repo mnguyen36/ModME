@@ -1,8 +1,0 @@
-link(rel='stylesheet', href='/stylesheets/remove-user-form.css')
-b Are you sure you wan't to remove #{username} from the database?
-p
-div.center
-    form(action="/remove-user", method='post')
-        input(type="hidden", name="id", value='#{userid}')
-        button.yes(type="submit" onclick="parent.$.fancybox.close()") YES
-        button.no(type="button", onclick="parent.$.fancybox.close()") NO

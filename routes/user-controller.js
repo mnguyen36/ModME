@@ -1,7 +1,7 @@
 var bcrypt   = require('bcrypt-nodejs');
 
 
-module.exports = function(app, passport){
+module.exports = function(app){
 
     app.get('/userlist', function (req, res) {
         if (req.isAuthenticated()){
