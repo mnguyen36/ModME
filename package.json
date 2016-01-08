@@ -27,7 +27,7 @@
     "express-session": "~1.0.0",
     "shufflejs" : "*",
     "async" : "*",
-    "socket.io": "*",
+    // "socket.io": "*",
     "ftp-get":"*",
     "spectrum-colorpicker":"*",
     "angular":"*",
